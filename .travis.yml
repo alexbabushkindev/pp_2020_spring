@@ -48,9 +48,10 @@ install:
 
 - if [[ $TRAVIS_OS_NAME == 'linux' ]]; then sudo apt-get install mpich libmpich-dev; fi
 - if [[ $TRAVIS_OS_NAME == 'linux' ]]; then sudo apt-get install libomp-dev; fi
-- if [[ $TRAVIS_OS_NAME == 'linux' ]]; then echo "deb http://ru.archive.ubuntu.com/ubuntu eoan main universe" | sudo tee -a /etc/apt/sources.list; fi
-- if [[ $TRAVIS_OS_NAME == 'linux' ]]; then sudo apt-get update | sudo apt-get install libtbb-dev; fi
 - if [[ $TRAVIS_OS_NAME == 'linux' ]]; then sudo apt install texlive*; fi
+- if [[ $TRAVIS_OS_NAME == 'linux' ]]; then sudo add-apt-repository 'deb http://ru.archive.ubuntu.com/ubuntu eoan main universe'; fi
+- if [[ $TRAVIS_OS_NAME == 'linux' ]]; then sudo apt-get update; fi
+- if [[ $TRAVIS_OS_NAME == 'linux' ]]; then  sudo apt-get install libtbb-dev; fi
 
 script:
 - git submodule update --init --recursive
